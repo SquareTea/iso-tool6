@@ -362,3 +362,8 @@ sed -i 's+Categories=System;Settings;Utility;+Categories=Utility;+g' /usr/share/
 #   Create link for gamescope to work.
 
 create_symlink /usr/lib/x86_64-linux-gnu/libwlroots.so.12 /usr/lib/x86_64-linux-gnu/libwlroots.so.11
+
+
+#   Make sure that the nameserver in /etc/resolv.conf is the local DNS server that dnsmasq uses.
+
+echo "nameserver 127.0.0.1" | tee /etc/resolv.conf
