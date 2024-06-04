@@ -91,20 +91,20 @@ create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitTextEditor3.so.$MAUIKIT_VERS
 
 # -- Create symlinks for MauiKit ImageTools.
 
-# create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/imagetools/libMauiKitImageTools3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/imagetools/libMauiKitImageTools3.so"
-# create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitImageTools3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitImageTools3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/imagetools/libMauiKitImageTools3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/imagetools/libMauiKitImageTools3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitImageTools3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitImageTools3.so"
 
 
 # -- Create symlinks for MauiKit Accounts.
 
-# create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/accounts/libMauiKitAccounts3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/accounts/libMauiKitAccounts3.so"
-# create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitAccounts3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitAccounts3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/accounts/libMauiKitAccounts3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/accounts/libMauiKitAccounts3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitAccounts3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitAccounts3.so"
 
 
 # -- Create symlinks for MauiKit Documents.
 
-# create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/documents/libMauiKitDocuments3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/documents/libMauiKitDocuments3.so"
-# create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitDocuments3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitDocuments3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/documents/libMauiKitDocuments3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauikit/documents/libMauiKitDocuments3.so"
+create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitDocuments3.so.$MAUIKIT_VERSION" "/usr/lib/x86_64-linux-gnu/libMauiKitDocuments3.so"
 
 
 # -- Create symlinks for MauiKit Calendar.
@@ -134,8 +134,8 @@ create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitTerminal3.so.$MAUIKIT_VERSIO
 # create_symlink "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauicore/power/libMauiCorePower.so.0.6.0" "/usr/lib/x86_64-linux-gnu/qt5/qml/org/mauicore/power/libMauiCorePower.so"
 
 
-#	Also link the library files for cask to launch because maui-shell and cask-server used Jammy for compilation, and the frameworks used Debian.
-#	KDE PIM libraries were renamed to different SO names because of course they were. Update the links on every new KF5 release.
+# -- Also link the library files for cask to launch because maui-shell and cask-server used Jammy for compilation, and the frameworks used Debian.
+# -- KDE PIM libraries were renamed to different SO names because of course they were. Update the links on every new KF5 release.
 
 # KDEPIM_LIB="5.24.5"
 # KF5_LIB="5.114.0"
@@ -148,24 +148,16 @@ create_symlink "/usr/lib/x86_64-linux-gnu/libMauiKitTerminal3.so.$MAUIKIT_VERSIO
 # create_symlink /usr/lib/x86_64-linux-gnu/libKF5CalendarCore.so.$KF5_LIB /usr/lib/x86_64-linux-gnu/libKF5CalendarCore.so.5abi2
 
 
-#	Add link for applet window buttons.
-#	NOTE: Update the link on every new release of Plasma.
+# -- Add link for applet window buttons.
+# -- NOTE: Update the link on every new release of Plasma.
 
 PLASMA_LIB="5.27.11"
 
 create_symlink /usr/lib/x86_64-linux-gnu/libkdecorations2private.so.$PLASMA_LIB /usr/lib/x86_64-linux-gnu/libkdecorations2private.so.9
 
 
-#	*And* create symlink for libboost-python for Calamares (from Neon) because it was compiled using Python 3.10 and we're using Python 3.11.
-# -- *AND* create symlink for libpython3.11 for Calamares (from Neon) because it was compiled using Python 3.10 and we're using Python 3.11.
-
-# create_symlink /usr/lib/x86_64-linux-gnu/libboost_python311.so.1.74.0 /usr/lib/x86_64-linux-gnu/libboost_python310.so.1.74.0
-# create_symlink /usr/lib/x86_64-linux-gnu/libpython3.11.so.1.0 /usr/lib/x86_64-linux-gnu/libpython3.10.so.1.0
-# create_symlink /usr/lib/x86_64-linux-gnu/libpython3.11.so.1 /usr/lib/x86_64-linux-gnu/libpython3.10.so.1
-
-
-#	Move APT and dpkg out of the way, out of the way, move b...
-#	use undebianize from Calamares to delete these files from the root.
+# -- Move APT and dpkg out of the way, out of the way, move b...
+# -- use undebianize from Calamares to delete these files from the root.
 
 mv /usr/bin/apt /opt/1
 mv /usr/bin/apt-get /opt/2
@@ -174,14 +166,14 @@ mv /usr/bin/dpkg /opt/3
 chmod -x /opt/{1,2,3}
 
 
-#	Add link for libappimage1.0.
+# -- Add link for libappimage1.0.
 
 create_symlink /usr/lib/x86_64-linux-gnu/libappimage.so.1.0.3.abi1 /usr/lib/x86_64-linux-gnu/libappimage.so.1.0
 
 
-#	Enable ufw by default.
-#	Add rules for ports so Waydroid to access the Internet.
-#	Add rules for KDE Connect.
+# -- Enable ufw by default.
+# -- Add rules for ports so Waydroid to access the Internet.
+# -- Add rules for KDE Connect.
 
 ufw enable
 ufw allow 53
@@ -191,12 +183,12 @@ ufw allow 1714:1764/udp
 ufw allow 1714:1764/tcp
 
 
-#	Force SDDM to use Wayland session.
+# -- Force SDDM to use Wayland session.
 
 mv /usr/share/xsessions/plasma.desktop /usr/share/xsessions/orig.plasma.desktop.bak
 
 
-#	Enable SELinux and set enforcing mode.
+# -- Enable SELinux and set enforcing mode.
 
 # selinux-activate
 # selinux-config-enforcing
