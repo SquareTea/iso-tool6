@@ -15,6 +15,7 @@ update
 HOST_PKGS='
 	axel
 	dkms
+	less
 	mokutil
 	shim-signed
 	squashfs-tools
