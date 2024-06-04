@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
-#	Source APT commands as functions.
-#	shellcheck source=/dev/null
+# -- Source APT commands as functions.
+# shellcheck source=/dev/null
 
-source /configs/scripts/others/apt-funcs
+source "$PWD"/configs/scripts/others/apt-funcs
 
-
-#	Create this directory otherwise the package displaylink-driver just fkn dies.
+# -- Create this directory otherwise the package displaylink-driver just fkn dies.
 
 mkdir -p /lib/systemd/system-sleep
 
@@ -23,7 +22,7 @@ install $MISC_HW_PKGS
 
 
 #   Install xpadneo and xone drivers using their installer scripts.
-#	FIXME: There are no Debian packages available, if and when they are, switch to use them instead.
+# -- FIXME: There are no Debian packages available, if and when they are, switch to use them instead.
 
 ORIGINAL_DIR=$(pwd)
 
@@ -40,7 +39,7 @@ bash install.sh
 cd "$ORIGINAL_DIR"
 
 
-#	Install the firmware that the xone script downloads.
+# -- Install the firmware that the xone script downloads.
 
 XONE_FW_PKGS='
 	cabextract
