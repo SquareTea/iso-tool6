@@ -21,7 +21,7 @@ puts "STARTING BOOTSTRAP."
 # -- Source APT commands as functions.
 # shellcheck source=/dev/null
 
-source /configs/scripts/others/apt-funcs
+source "$PWD"/configs/scripts/others/apt-funcs
 
 
 # -- Block installation of some packages.
