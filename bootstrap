@@ -50,6 +50,11 @@ cp -r /configs/files/other/pkg-origin /tmp/pkg-origin
 cp -r /configs/files/apt_conf/skip_waydroid.conf /etc/apt/apt.conf.d/
 
 
+# -- Check installed packages at start.
+
+list_installed_text_start
+
+
 ###############################
 # INFORMATION:                #
 # Root content starts here    #
@@ -61,12 +66,6 @@ cp -r /configs/files/apt_conf/skip_waydroid.conf /etc/apt/apt.conf.d/
 puts "ADDING BASIC PACKAGES."
 
 01-install-basic-pkgs
-
-
-# -- Check installed packages at start.
-
-list_number_pkgs
-list_installed_text_start
 
 
 # -- Add repositories to build root.
@@ -195,10 +194,10 @@ puts "REMOVE BUILD SOURCES."
 19-remove-build-sources
 
 
-####################################
-# -- WARNING:						#
-# -- No apt usage past this point.	#
-####################################
+#################################
+# WARNING:                      #
+# No apt usage past this point. #
+#################################
 
 
 # -- Changes specific to this image. If they can be put in a package, do so.
@@ -217,11 +216,6 @@ puts "EDITING CONF. FILES."
 21-edit-conf-files
 
 
-# -- Create a list of installed packages at end.
-
-list_installed_text_end
-
-
 #############################
 # INFORMATION:              #
 # Root content ends here    #
@@ -230,6 +224,11 @@ list_installed_text_end
 puts "PERFORM MANUAL CHECKS."
 
 22-manual-checks
+
+
+# -- Create a list of installed packages at end.
+
+list_installed_text_end
 
 
 puts "EXITING BOOTSTRAP."
