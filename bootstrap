@@ -18,12 +18,6 @@ puts () { printf "\n\n --- %s\n" "$*"; }
 puts "STARTING BOOTSTRAP."
 
 
-# -- Source APT commands as functions.
-# shellcheck source=/dev/null
-
-source /configs/scripts/others/apt-funcs
-
-
 # -- Block installation of some packages.
 
 cp -r /configs/files/apt_preferences/package_preferences /etc/apt/preferences.d/package_preferences
