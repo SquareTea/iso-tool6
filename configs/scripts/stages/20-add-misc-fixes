@@ -18,6 +18,21 @@ create_symlink() {
 }
 
 
+# -- Function fot download Appimage files.
+
+user_agent="BrightSign/8.2.55.5 (XT1144) Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.3 Chrome/69.0.3497.128 Safari/537.36"
+
+download_appimage() {
+    local name="$1"
+    local url="$2"
+    local destination="/Applications/$name"
+
+    axel -a -q -k -U "$user_agent" -n 8 "$url" -o "$destination"
+    chmod +x "$destination"
+}
+
+
+
 # -- Remove unwanted kernel and initrd links from /boot and /.
 
 rm -f /boot/{vmlinuz,initrd.img,vmlinuz.old,initrd.img.old} \
@@ -283,3 +298,33 @@ sed -i 's+Categories=System;Settings;Utility;+Categories=Utility;+g' /usr/share/
 # -- Create link for gamescope to work.
 
 create_symlink /usr/lib/x86_64-linux-gnu/libwlroots.so.12 /usr/lib/x86_64-linux-gnu/libwlroots.so.11
+
+
+# -- Only download NXSC AppImage.
+
+download_appimage "nx-software-center" "https://github.com/Nitrux/nx-software-center/releases/download/latest/nx-software-center-latest-x86_64.AppImage"
+
+DESKTOP_FILE="/usr/share/applications/org.nx.softwarecenter.desktop"
+
+cat << EOF > "$DESKTOP_FILE"
+[Desktop Entry]
+Name=NX Software Center
+Comment=Software store for AppImages
+TryExec=/Applications/nx-software-center
+Exec=/Applications/nx-software-center %U
+Keywords=program;software;repository;package;install;remove;update;apps;applications;appimage;
+Terminal=false
+Type=Application
+GenericName=Software Center
+Categories=Qt;KDE;System;
+StartupNotify=true
+Icon=nx-software-center
+MimeType=application/vnd.appimage;application/x-executable;
+
+SingleMainWindow=true
+
+[Desktop Action FirejailProfile]
+Exec=firejail --env=DESKTOPINTEGRATION=appimaged --private --appimage /Applications/nx-software-center
+Name=Run without sandbox profile
+TryExec=firejail
+EOF
