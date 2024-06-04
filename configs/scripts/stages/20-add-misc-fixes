@@ -18,7 +18,7 @@ create_symlink() {
 }
 
 
-# -- Function fot download Appimage files.
+# -- Function to download Appimage files.
 
 user_agent="BrightSign/8.2.55.5 (XT1144) Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.3 Chrome/69.0.3497.128 Safari/537.36"
 
