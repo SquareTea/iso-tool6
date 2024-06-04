@@ -21,7 +21,7 @@ MISC_HW_PKGS='
 install $MISC_HW_PKGS
 
 
-#   Install xpadneo and xone drivers using their installer scripts.
+# -- Install xpadneo and xone drivers using their installer scripts.
 # -- FIXME: There are no Debian packages available, if and when they are, switch to use them instead.
 
 ORIGINAL_DIR=$(pwd)
