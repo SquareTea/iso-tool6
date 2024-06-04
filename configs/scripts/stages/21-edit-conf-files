@@ -80,7 +80,7 @@ $(which cp) /configs/files/conf/aide.conf /etc/aide/aide.conf
 $(which cp) /configs/files/other/10_aide_hostname /etc/aide/aide.conf.d/10_aide_hostname
 
 
-#   Enable using a fingerprint sensor in SDDM.
+# -- Enable using a fingerprint sensor in SDDM.
 
 sed -i '/#%PAM-1.0/a \\n# Use either a password or a fingerprint\nauth \t\t[success=1 new_authtok_reqd=1 default=ignore]  \tpam_unix.so try_first_pass likeauth nullok\nauth \t\tsufficient  \tpam_fprintd.so' /etc/pam.d/sddm
 
@@ -97,7 +97,7 @@ fi
 usermod -L razer
 
 
-#   Edit /etc/resolvconf.conf configuration to generate a functional (for everybody) /etc/resolv.conf by adding external nameservers.
+# -- Edit /etc/resolvconf.conf configuration to generate a functional (for everybody) /etc/resolv.conf by adding external nameservers.
 
 cat /configs/files/conf/resolvconf.conf > /etc/resolvconf.conf
 
