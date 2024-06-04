@@ -32,7 +32,6 @@ download_appimage() {
 }
 
 
-
 # -- Remove unwanted kernel and initrd links from /boot and /.
 
 rm -f /boot/{vmlinuz,initrd.img,vmlinuz.old,initrd.img.old} \
