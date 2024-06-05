@@ -87,8 +87,6 @@ fi
 usermod -L razer
 
 
-# # -- Edit /etc/resolvconf.conf configuration to generate a functional (for everybody) /etc/resolv.conf by adding external nameservers.
+# -- Use custom /etc/resolv.conf configuration by adding DNS servers.
 
-# cat /configs/files/conf/resolvconf.conf > /etc/resolvconf.conf
-
-# resolvconf -u
+cat /configs/files/conf/resolv.conf > /etc/resolv.conf
