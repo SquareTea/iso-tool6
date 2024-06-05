@@ -85,8 +85,3 @@ else
 fi
 
 usermod -L razer
-
-
-# -- Use custom /etc/resolv.conf configuration by adding DNS servers.
-
-cat /configs/files/conf/resolv.conf > /etc/resolv.conf
