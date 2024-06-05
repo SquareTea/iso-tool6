@@ -39,6 +39,19 @@ NX_DESKTOP_PKG='
 
 FH_SIGH_PKGS='
 	polkit-kde-agent-1=4:5.27.11-1
+	network-manager-openconnect
+	plasma-desktop
+	plasma-gamemode
+	plasma-widgets-addons
+	nx-desktop-apps-legacy
+	aide
+	aide-common
+	btrfs-progs
+	firejail
+	firejail-profiles
+	kexec-tools
+	plasma-workspace-wayland
+
 '
 
 install $NX_DESKTOP_PKG $FH_SIGH_PKGS
