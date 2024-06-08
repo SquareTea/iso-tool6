@@ -332,4 +332,4 @@ EOF
 # -- Create links for dbab lists in /etc/NetworkManager/dnsmasq.d.
 
 ln -sv /etc/dnsmasq.d/dbab-map.adblock.conf /etc/NetworkManager/dnsmasq.d/dbab-map.adblock.conf
-ln -sv /etc/dnsmasq.d/dbab-map.trashshites.conf /etc/NetworkManager/dnsmasq.d/dbab-map.trashsites.conf
+ln -sv /etc/dnsmasq.d/dbab-map.trashsites.conf /etc/NetworkManager/dnsmasq.d/dbab-map.trashsites.conf
