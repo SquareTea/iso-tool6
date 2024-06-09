@@ -37,7 +37,7 @@ check_file_contents() {
   fi
 }
 
-check_initramfs() {
+check_initramfs_size() {
   local initramfs_file
   initramfs_file="/boot/initrd.img-$(uname -r)"
 
@@ -156,4 +156,4 @@ check_file_contents "/etc/resolv.conf"
 # check_file_contents "/etc/rc.conf"
 # check_file_contents "/usr/share/initramfs-tools/scripts/casper"
 
-check_initramfs
+check_initramfs_size
