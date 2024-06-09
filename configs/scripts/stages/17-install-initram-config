@@ -19,9 +19,9 @@ cat /configs/scripts/others/casper/15autologin > /usr/share/initramfs-tools/scri
 cat /configs/scripts/others/casper/12fstab > /usr/share/initramfs-tools/scripts/casper-bottom/12fstab
 
 
-# -- Add hyper-v modules to initramfs.
+# -- Add modules to initramfs.
 
-printf '%s\n' hv_utils hv_vmbus hv_storvsc hv_blkvsc hv_netvsc exfat >> /etc/initramfs-tools/modules
+printf '%s\n' exfat >> /etc/initramfs-tools/modules
 
 
 # -- Add gpu modules to load at boot time.
@@ -32,6 +32,11 @@ printf '%s\n' amdgpu i915 >> /etc/modules-load.d/gpu-modules-boot-time.conf
 # -- Add other modules to load at boot time.
 
 printf '%s\n' fuse exfat loop >> /etc/modules-load.d/additional-modules-boot-time.conf
+
+
+# -- Add Hyper-V modules to load at boot time.
+
+printf '%s\n' hv_utils hv_vmbus hv_storvsc hv_blkvsc hv_netvsc >> /etc/modules-load.d/hyperv-modules-boot-time.conf
 
 
 # -- Remove these lines from /usr/share/initramfs-tools/scripts/casper because they're relevant in Ubuntu but not here.
