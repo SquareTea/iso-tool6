@@ -21,7 +21,7 @@ DESTINATION="$(mktemp -d)"
 axel -a -q -k -U "$USER_AGENT" -n 8 "$LATEST_URL" -o "${DESTINATION}/latest.txt"
 
 LATEST_FILE="$(cat "${DESTINATION}/latest.txt")"
-FILE_PATH="$(echo "$LATEST_FILE" | awk '{print $2}')"
+FILE_PATH="470.256.02/NVIDIA-Linux-x86_64-470.256.02.run"
 FULL_URL="${BASE_URL}${FILE_PATH}"
 
 axel -a -q -k -U "$USER_AGENT" -n 8 "$FULL_URL" -o "${DESTINATION}/$(basename "$FILE_PATH")"
