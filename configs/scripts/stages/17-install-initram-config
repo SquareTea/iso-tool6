@@ -44,6 +44,11 @@ printf '%s\n' hv_utils hv_vmbus hv_storvsc hv_blkvsc hv_netvsc >> /etc/modules-l
 sed -i '/touch \/root\/var\/crash\/crash.init/d; /rm \/root\/var\/crash\/crash.init/d' /usr/share/initramfs-tools/scripts/casper
 
 
+# -- Remove these scripts that is added by casper as we don't use them.
+
+rm /usr/share/initramfs-tools/scripts/casper-bottom/{31disable_update_notifier,33enable_apport_crashes,52gnome_initial_setup,59disable_mozc_autosetup}
+
+
 # -- Compress the initramfs using the highest value for Zstd.
 
 cp -r /configs/files/initramfs-tools/conf.d/* /etc/initramfs-tools/conf.d/
