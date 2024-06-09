@@ -44,10 +44,10 @@ check_initramfs() {
   if [ -f "$initramfs_file" ]; then
     echo "Initramfs file: $initramfs_file"
     echo "Initramfs size:"
-    du -h "$initramfs_file" | cut -f1
+    du -h --apparent-size "$initramfs_file" | awk '{printf "%.1fM\n", $1}'
 
     echo "15 largest files in initramfs:"
-    lsinitramfs -l "$initramfs_file" | awk '{print $1, $NF}' | sort -rh | head -n 15 | awk '{print $1, $2}'
+    lsinitramfs -l "$initramfs_file" | sort -rh -k5 | head -n 15 | awk '{printf "%.1fM %s %s\n", $5/1024/1024, $3, $NF}'
   else
     echo "Error: Initramfs file '$initramfs_file' not found."
   fi
