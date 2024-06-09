@@ -37,26 +37,17 @@ check_file_contents() {
   fi
 }
 
-check_initramfs_contents() {
-  local filenames=("$@")
+check_initramfs() {
   local initramfs_file
   initramfs_file="/boot/initrd.img-$(uname -r)"
 
   if [ -f "$initramfs_file" ]; then
-    for filename in "${filenames[@]}"; do
-      echo "Checking for $filename in initramfs $initramfs_file..."
-      local file_exists
-      file_exists=$(lsinitramfs "$initramfs_file" | grep -w "$filename" || true)
-      if [ -n "$file_exists" ]; then
-        echo "$filename exists in initramfs $initramfs_file."
-        echo "Paths containing $filename:"
-        echo "=========================="
-        echo "$file_exists"
-        echo "=========================="
-      else
-        echo "$filename does not exist in initramfs $initramfs_file."
-      fi
-    done
+    echo "Initramfs file: $initramfs_file"
+    echo "Initramfs size:"
+    du -h "$initramfs_file" | cut -f1
+
+    echo "15 largest files in initramfs:"
+    lsinitramfs -l "$initramfs_file" | awk '{print $1, $NF}' | sort -rh | head -n 15 | awk '{print $1, $2}'
   else
     echo "Error: Initramfs file '$initramfs_file' not found."
   fi
@@ -165,4 +156,4 @@ check_file_contents "/etc/resolv.conf"
 # check_file_contents "/etc/rc.conf"
 # check_file_contents "/usr/share/initramfs-tools/scripts/casper"
 
-check_initramfs_contents "overlay"
+check_initramfs
