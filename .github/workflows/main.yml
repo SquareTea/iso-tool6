@@ -1,0 +1,23 @@
+name: CI
+
+on:
+
+  push:
+    branches: [ "legacy" ]
+  pull_request:
+    branches: [ "legacy" ]
+
+  workflow_dispatch:
+jobs:
+  BuildIso:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3 
+      - name: buildiso
+        run: ./iso-tool
+
+      - name: upload iso
+        uses: actions/upload-artifact@master
+        with:
+            name: EXTRACKME
+            path: iso/nitrux*.iso
