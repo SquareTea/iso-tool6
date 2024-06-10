@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3 
       - name: buildiso
-        run: ./iso-tool
+        run: sudo ./iso-tool
 
       - name: upload iso
         uses: actions/upload-artifact@master
