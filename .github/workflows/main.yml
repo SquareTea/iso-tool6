@@ -20,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
             name: EXTRACKME
-            path: iso/nitrux*.iso
+            path: nitrux*.iso
